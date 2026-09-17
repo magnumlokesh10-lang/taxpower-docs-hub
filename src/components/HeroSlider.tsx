@@ -84,7 +84,7 @@ export function HeroSlider() {
     return () => clearInterval(id);
   }, [paused]);
 
-  const slide = slides[active];
+  const slide = slides[active]!;
 
   return (
     <section aria-roledescription="carousel" aria-label="TaxPower products" className="blueprint-bg border-b">
