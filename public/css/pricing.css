@@ -657,6 +657,19 @@
     }
 }
 
+/* ----- Narrow 3-Column Grid: keep price rows inside cards ----- */
+@media (max-width: 1200px) and (min-width: 992px) {
+    .price-line {
+        white-space: normal;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .price-line-left {
+        flex-wrap: wrap;
+    }
+}
+
 /* ----- Tablet Grid ----- */
 @media (max-width: 991px) and (min-width: 601px) {
     .pricing-grid {
