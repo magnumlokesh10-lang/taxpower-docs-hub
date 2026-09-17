@@ -10,102 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as DownloadsRouteImport } from './routes/downloads'
-import { Route as GstRouteImport } from './routes/gst'
-import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as SupportRouteImport } from './routes/support'
-import { Route as TdsRouteImport } from './routes/tds'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DownloadsRoute = DownloadsRouteImport.update({
-  id: '/downloads',
-  path: '/downloads',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GstRoute = GstRouteImport.update({
-  id: '/gst',
-  path: '/gst',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SupportRoute = SupportRouteImport.update({
-  id: '/support',
-  path: '/support',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TdsRoute = TdsRouteImport.update({
-  id: '/tds',
-  path: '/tds',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/downloads': typeof DownloadsRoute
-  '/gst': typeof GstRoute
-  '/pricing': typeof PricingRoute
-  '/support': typeof SupportRoute
-  '/tds': typeof TdsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/downloads': typeof DownloadsRoute
-  '/gst': typeof GstRoute
-  '/pricing': typeof PricingRoute
-  '/support': typeof SupportRoute
-  '/tds': typeof TdsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/downloads': typeof DownloadsRoute
-  '/gst': typeof GstRoute
-  '/pricing': typeof PricingRoute
-  '/support': typeof SupportRoute
-  '/tds': typeof TdsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    '/' | '/about' | '/downloads' | '/gst' | '/pricing' | '/support' | '/tds'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/downloads' | '/gst' | '/pricing' | '/support' | '/tds'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/downloads'
-    | '/gst'
-    | '/pricing'
-    | '/support'
-    | '/tds'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  DownloadsRoute: typeof DownloadsRoute
-  GstRoute: typeof GstRoute
-  PricingRoute: typeof PricingRoute
-  SupportRoute: typeof SupportRoute
-  TdsRoute: typeof TdsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -117,59 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/downloads': {
-      id: '/downloads'
-      path: '/downloads'
-      fullPath: '/downloads'
-      preLoaderRoute: typeof DownloadsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gst': {
-      id: '/gst'
-      path: '/gst'
-      fullPath: '/gst'
-      preLoaderRoute: typeof GstRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/support': {
-      id: '/support'
-      path: '/support'
-      fullPath: '/support'
-      preLoaderRoute: typeof SupportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tds': {
-      id: '/tds'
-      path: '/tds'
-      fullPath: '/tds'
-      preLoaderRoute: typeof TdsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  DownloadsRoute: DownloadsRoute,
-  GstRoute: GstRoute,
-  PricingRoute: PricingRoute,
-  SupportRoute: SupportRoute,
-  TdsRoute: TdsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
