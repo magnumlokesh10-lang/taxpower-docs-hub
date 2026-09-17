@@ -2,7 +2,7 @@
  * Paste your deployed Google Apps Script Web App URL below.
  * It must look like: https://script.google.com/macros/s/AKfycb...../exec
  */
-window.TAXPOWER_FORM_ENDPOINT = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+window.TAXPOWER_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz8GTacY-V0Loi3-MtnOdzExnGv3b5uCqRLTgqhEiR_ibXYGRF9t9ETljXDKbxdesIQ/exec';
 
 (function () {
   'use strict';

@@ -17,7 +17,7 @@
  */
 
 var SHEET_NAME = 'Enquiries';
-var NOTIFY_EMAIL = 'rajnishd37@gmail.com';
+var NOTIFY_EMAIL = 'magnumlokesh10@gmail.com';
 var WHATSAPP_PHONE = '918080631102';          // country code + number, no +
 var WHATSAPP_APIKEY = 'PASTE_YOUR_CALLMEBOT_APIKEY';
 
