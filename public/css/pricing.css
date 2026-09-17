@@ -662,6 +662,16 @@
     .pricing-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .price-line {
+        white-space: normal;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .price-line-left {
+        flex-wrap: wrap;
+    }
 }
 
 /* ----- Featured Suites: stack below 768px ----- */
