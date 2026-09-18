@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedCrmRouteImport } from './routes/_authenticated/crm'
 import { Route as CrmLoginRouteImport } from './routes/crm.login'
+import { Route as AuthenticatedCrmIndexRouteImport } from './routes/_authenticated/crm.index'
 import { Route as AuthenticatedCrmClientsRouteImport } from './routes/_authenticated/crm.clients'
 import { Route as AuthenticatedCrmLeadsRouteImport } from './routes/_authenticated/crm.leads'
 import { Route as ApiPublicEnquiryRouteImport } from './routes/api/public/enquiry'
@@ -35,6 +36,11 @@ const CrmLoginRoute = CrmLoginRouteImport.update({
   id: '/crm/login',
   path: '/crm/login',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedCrmIndexRoute = AuthenticatedCrmIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedCrmRoute,
 } as any)
 const AuthenticatedCrmClientsRoute = AuthenticatedCrmClientsRouteImport.update({
   id: '/clients',
@@ -59,14 +65,15 @@ export interface FileRoutesByFullPath {
   '/crm/clients': typeof AuthenticatedCrmClientsRoute
   '/crm/leads': typeof AuthenticatedCrmLeadsRoute
   '/api/public/enquiry': typeof ApiPublicEnquiryRoute
+  '/crm/': typeof AuthenticatedCrmIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/crm': typeof AuthenticatedCrmRouteWithChildren
   '/crm/login': typeof CrmLoginRoute
   '/crm/clients': typeof AuthenticatedCrmClientsRoute
   '/crm/leads': typeof AuthenticatedCrmLeadsRoute
   '/api/public/enquiry': typeof ApiPublicEnquiryRoute
+  '/crm': typeof AuthenticatedCrmIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,6 +84,7 @@ export interface FileRoutesById {
   '/_authenticated/crm/clients': typeof AuthenticatedCrmClientsRoute
   '/_authenticated/crm/leads': typeof AuthenticatedCrmLeadsRoute
   '/api/public/enquiry': typeof ApiPublicEnquiryRoute
+  '/_authenticated/crm/': typeof AuthenticatedCrmIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -87,14 +95,15 @@ export interface FileRouteTypes {
     | '/crm/clients'
     | '/crm/leads'
     | '/api/public/enquiry'
+    | '/crm/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/crm'
     | '/crm/login'
     | '/crm/clients'
     | '/crm/leads'
     | '/api/public/enquiry'
+    | '/crm'
   id:
     | '__root__'
     | '/'
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
     | '/_authenticated/crm/clients'
     | '/_authenticated/crm/leads'
     | '/api/public/enquiry'
+    | '/_authenticated/crm/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -143,6 +153,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CrmLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/crm/': {
+      id: '/_authenticated/crm/'
+      path: '/'
+      fullPath: '/crm/'
+      preLoaderRoute: typeof AuthenticatedCrmIndexRouteImport
+      parentRoute: typeof AuthenticatedCrmRoute
+    }
     '/_authenticated/crm/clients': {
       id: '/_authenticated/crm/clients'
       path: '/clients'
@@ -170,11 +187,13 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedCrmRouteChildren {
   AuthenticatedCrmClientsRoute: typeof AuthenticatedCrmClientsRoute
   AuthenticatedCrmLeadsRoute: typeof AuthenticatedCrmLeadsRoute
+  AuthenticatedCrmIndexRoute: typeof AuthenticatedCrmIndexRoute
 }
 
 const AuthenticatedCrmRouteChildren: AuthenticatedCrmRouteChildren = {
   AuthenticatedCrmClientsRoute: AuthenticatedCrmClientsRoute,
   AuthenticatedCrmLeadsRoute: AuthenticatedCrmLeadsRoute,
+  AuthenticatedCrmIndexRoute: AuthenticatedCrmIndexRoute,
 }
 
 const AuthenticatedCrmRouteWithChildren =
