@@ -50,6 +50,19 @@ export const updateLead = createServerFn({ method: "POST" })
     const patch: Record<string, unknown> = {};
     if (data.status !== undefined) patch["status"] = data.status;
     if (data.notes !== undefined) patch["notes"] = data.notes;
+    if (data.followup_date !== undefined)
+      patch["followup_date"] = data.followup_date ? data.followup_date : null;
+    if (data.followup_note !== undefined) patch["followup_note"] = data.followup_note;
+    if (data.purchase_product !== undefined) patch["purchase_product"] = data.purchase_product;
+    if (data.purchase_amount !== undefined) patch["purchase_amount"] = data.purchase_amount;
+    if (data.invoice_no !== undefined) patch["invoice_no"] = data.invoice_no;
+    if (data.mark_converted) {
+      patch["status"] = "converted";
+      patch["converted_at"] = new Date().toISOString();
+    }
+    if (data.status !== undefined && data.status !== "converted" && !data.mark_converted) {
+      patch["converted_at"] = null;
+    }
     if (Object.keys(patch).length === 0) return { ok: true };
     const { error } = await (context as AdminContext).supabase
       .from("leads")
