@@ -34,6 +34,12 @@ const updateSchema = z.object({
   id: z.string().uuid(),
   status: z.enum(["new", "contacted", "converted", "closed"]).optional(),
   notes: z.string().max(5000).optional(),
+  followup_date: z.string().max(20).nullable().optional(),
+  followup_note: z.string().max(5000).optional(),
+  purchase_product: z.string().max(500).optional(),
+  purchase_amount: z.number().nonnegative().nullable().optional(),
+  invoice_no: z.string().max(120).optional(),
+  mark_converted: z.boolean().optional(),
 });
 
 export const updateLead = createServerFn({ method: "POST" })
