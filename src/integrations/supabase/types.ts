@@ -19,15 +19,21 @@ export type Database = {
           address: string
           city: string
           company: string
+          converted_at: string | null
           created_at: string
           email: string
+          followup_date: string | null
+          followup_note: string
           gstin: string
           id: string
+          invoice_no: string
           mobile: string
           name: string
           notes: string
           page: string
           product: string
+          purchase_amount: number | null
+          purchase_product: string
           purpose: string
           state: string
           status: Database["public"]["Enums"]["lead_status"]
@@ -39,15 +45,21 @@ export type Database = {
           address?: string
           city?: string
           company?: string
+          converted_at?: string | null
           created_at?: string
           email?: string
+          followup_date?: string | null
+          followup_note?: string
           gstin?: string
           id?: string
+          invoice_no?: string
           mobile?: string
           name?: string
           notes?: string
           page?: string
           product?: string
+          purchase_amount?: number | null
+          purchase_product?: string
           purpose?: string
           state?: string
           status?: Database["public"]["Enums"]["lead_status"]
@@ -59,15 +71,21 @@ export type Database = {
           address?: string
           city?: string
           company?: string
+          converted_at?: string | null
           created_at?: string
           email?: string
+          followup_date?: string | null
+          followup_note?: string
           gstin?: string
           id?: string
+          invoice_no?: string
           mobile?: string
           name?: string
           notes?: string
           page?: string
           product?: string
+          purchase_amount?: number | null
+          purchase_product?: string
           purpose?: string
           state?: string
           status?: Database["public"]["Enums"]["lead_status"]
