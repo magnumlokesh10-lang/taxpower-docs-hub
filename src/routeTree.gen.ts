@@ -10,11 +10,28 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthenticatedCrmRouteImport } from './routes/_authenticated/crm'
+import { Route as CrmLoginRouteImport } from './routes/crm.login'
 import { Route as ApiPublicEnquiryRouteImport } from './routes/api/public/enquiry'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedCrmRoute = AuthenticatedCrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const CrmLoginRoute = CrmLoginRouteImport.update({
+  id: '/crm/login',
+  path: '/crm/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicEnquiryRoute = ApiPublicEnquiryRouteImport.update({
@@ -25,27 +42,42 @@ const ApiPublicEnquiryRoute = ApiPublicEnquiryRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crm': typeof AuthenticatedCrmRoute
+  '/crm/login': typeof CrmLoginRoute
   '/api/public/enquiry': typeof ApiPublicEnquiryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crm': typeof AuthenticatedCrmRoute
+  '/crm/login': typeof CrmLoginRoute
   '/api/public/enquiry': typeof ApiPublicEnquiryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/_authenticated/crm': typeof AuthenticatedCrmRoute
+  '/crm/login': typeof CrmLoginRoute
   '/api/public/enquiry': typeof ApiPublicEnquiryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/enquiry'
+  fullPaths: '/' | '/crm' | '/crm/login' | '/api/public/enquiry'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/enquiry'
-  id: '__root__' | '/' | '/api/public/enquiry'
+  to: '/' | '/crm' | '/crm/login' | '/api/public/enquiry'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/_authenticated/crm'
+    | '/crm/login'
+    | '/api/public/enquiry'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  CrmLoginRoute: typeof CrmLoginRoute
   ApiPublicEnquiryRoute: typeof ApiPublicEnquiryRoute
 }
 
@@ -58,6 +90,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/crm': {
+      id: '/_authenticated/crm'
+      path: '/crm'
+      fullPath: '/crm'
+      preLoaderRoute: typeof AuthenticatedCrmRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/crm/login': {
+      id: '/crm/login'
+      path: '/crm/login'
+      fullPath: '/crm/login'
+      preLoaderRoute: typeof CrmLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/enquiry': {
       id: '/api/public/enquiry'
       path: '/api/public/enquiry'
@@ -68,8 +121,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedCrmRoute: typeof AuthenticatedCrmRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedCrmRoute: AuthenticatedCrmRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  CrmLoginRoute: CrmLoginRoute,
   ApiPublicEnquiryRoute: ApiPublicEnquiryRoute,
 }
 export const routeTree = rootRouteImport

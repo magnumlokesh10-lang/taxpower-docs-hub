@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 
 import { listLeads, updateLead } from "@/lib/crm.functions";
 import { supabase } from "@/integrations/supabase/client";
@@ -220,8 +220,8 @@ function CrmDashboard() {
               </thead>
               <tbody>
                 {filtered.map((lead) => (
-                  <>
-                    <tr key={lead.id} className="border-t border-border align-top">
+                  <Fragment key={lead.id}>
+                    <tr className="border-t border-border align-top">
                       <td className="px-3 py-2 whitespace-nowrap text-muted-foreground">
                         {lead.submitted_at_text ||
                           new Date(lead.submitted_at).toLocaleString("en-IN")}
@@ -264,7 +264,7 @@ function CrmDashboard() {
                       </td>
                     </tr>
                     {openId === lead.id ? (
-                      <tr key={`${lead.id}-details`} className="border-t border-border bg-muted/30">
+                      <tr className="border-t border-border bg-muted/30">
                         <td colSpan={7} className="px-3 py-3">
                           <div className="grid gap-2 text-sm sm:grid-cols-2">
                             <div>
@@ -292,7 +292,7 @@ function CrmDashboard() {
                         </td>
                       </tr>
                     ) : null}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
