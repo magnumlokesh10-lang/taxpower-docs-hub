@@ -75,6 +75,28 @@ export const Route = createFileRoute("/api/public/enquiry")({
           d.page,
         ];
 
+        // Save the lead into the CRM database (independent of the sheet write).
+        try {
+          const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+          const { error: dbError } = await supabaseAdmin.from("leads").insert({
+            submitted_at_text: submittedAt,
+            name: d.name,
+            company: d.company,
+            mobile: d.mobile,
+            email: d.email,
+            gstin: d.gstin,
+            address: d.address,
+            city: d.city,
+            state: d.state,
+            product: d.product,
+            purpose: d.purpose,
+            page: d.page,
+          });
+          if (dbError) console.error(`enquiry: crm insert failed: ${dbError.message}`);
+        } catch (dbErr) {
+          console.error("enquiry: crm insert threw", dbErr);
+        }
+
         const url = `${GATEWAY_URL}/spreadsheets/${SHEET_ID}/values/Sheet1!A:L:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`;
         const res = await fetch(url, {
           method: "POST",
