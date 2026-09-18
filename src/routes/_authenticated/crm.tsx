@@ -1,6 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { CrmWorkspace } from "@/components/crm/crm-workspace";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated/crm")({
   head: () => ({
@@ -14,5 +12,5 @@ export const Route = createFileRoute("/_authenticated/crm")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: () => <CrmWorkspace view="dashboard" />,
+  component: Outlet,
 });
