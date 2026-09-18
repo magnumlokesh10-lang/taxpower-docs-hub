@@ -5,4 +5,4 @@
 - [x] Build Leads page with row-click details, filters, export, status, and convert action
 - [x] Build Clients page for converted customers with row-click details and export
 - [x] Restyle lead details as a proper enquiry-form view
-- [ ] Verify desktop/mobile behavior and protected access
+- [x] Verify desktop/mobile behavior and protected access
