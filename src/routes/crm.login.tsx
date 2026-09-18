@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/crm/login")({
-  ssr: false,
   head: () => ({
     meta: [
       { title: "Internal Login" },
