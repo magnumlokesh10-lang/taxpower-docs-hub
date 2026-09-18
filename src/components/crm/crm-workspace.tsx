@@ -137,7 +137,7 @@ export function CrmWorkspace({ view }: { view: CrmView }) {
         onMobileClose={() => setSidebarOpen(false)}
         onSignOut={signOut}
       />
-      <div className={`min-h-screen transition-[margin] duration-200 md:${collapsed ? "ml-20" : "ml-64"}`}>
+      <div className={`min-h-screen transition-[margin] duration-200 ${collapsed ? "md:ml-20" : "md:ml-64"}`}>
         <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border bg-background/95 px-4 backdrop-blur sm:px-6">
           <div className="flex min-w-0 items-center gap-3">
             <Button variant="outline" size="icon" className="md:hidden" onClick={() => setSidebarOpen(true)} aria-label="Open menu">
@@ -234,7 +234,7 @@ function CrmSidebar({ collapsed, mobileOpen, onCollapse, onMobileClose, onSignOu
   );
 }
 
-function DashboardView({ leads, counts, today, onOpen }: { leads: Lead[]; counts: Record<string, number>; today: string; onOpen: (id: string) => void }) {
+function DashboardView({ leads, counts, today, onOpen }: { leads: Lead[]; counts: { total: number; today: number; new: number; contacted: number; converted: number; closed: number; followups: number; due: number }; today: string; onOpen: (id: string) => void }) {
   const cards = [
     { label: "Today's leads", value: counts.today, icon: TrendingUp, tone: "bg-sky-soft text-sky-brand" },
     { label: "Total leads", value: counts.total, icon: Users, tone: "bg-brand-soft text-brand" },
@@ -254,7 +254,7 @@ function DashboardView({ leads, counts, today, onOpen }: { leads: Lead[]; counts
         <section className="rounded-md border border-border bg-card p-5 shadow-sm">
           <div className="flex items-center gap-2"><BarChart3 className="h-5 w-5 text-primary" /><h2 className="font-semibold text-card-foreground">Lead pipeline</h2></div>
           <div className="mt-6 space-y-5">
-            {bars.map((bar) => <div key={bar.status}><div className="mb-2 flex justify-between text-sm"><span className="text-muted-foreground">{STATUS_LABEL[bar.status]}</span><span className="font-semibold text-foreground">{bar.value}</span></div><div className="h-2.5 overflow-hidden rounded-full bg-muted"><div className={`h-full rounded-full ${bar.status === "converted" ? "bg-success" : bar.status === "contacted" ? "bg-warning" : bar.status === "closed" ? "bg-muted-foreground" : "bg-sky-brand"}`} style={{ width: `${Math.max((bar.value / max) * 100, bar.value ? 6 : 0)}%` }} /></div></div>)}
+            {bars.map((bar) => <div key={bar.status}><div className="mb-2 flex justify-between text-sm"><span className="text-muted-foreground">{STATUS_LABEL[bar.status]}</span><span className="font-semibold text-foreground">{bar.value}</span></div><div className="h-2.5 overflow-hidden rounded-full bg-muted"><div className={`h-full rounded-full ${bar.status === "converted" ? "bg-success" : bar.status === "contacted" ? "bg-warning" : bar.status === "closed" ? "bg-muted-foreground" : "bg-sky-brand"} ${barWidth(bar.value, max)}`} /></div></div>)}
           </div>
         </section>
         <section className="rounded-md border border-border bg-card p-5 shadow-sm">
@@ -360,3 +360,13 @@ function FormSelect({ label, value, onChange, children }: { label: string; value
 function FormTextarea({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) { return <label className="text-sm"><span className="mb-1.5 block text-xs font-semibold text-muted-foreground">{label}</span><textarea rows={4} value={value} onChange={(event) => onChange(event.target.value)} className="w-full resize-y rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring" /></label>; }
 function LoadingState() { return <div className="grid min-h-[50vh] place-items-center"><div className="text-center"><div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-muted border-t-primary" /><p className="mt-3 text-sm text-muted-foreground">Loading CRM…</p></div></div>; }
 function ErrorState() { return <div className="rounded-md border border-destructive/30 bg-destructive/5 p-5 text-sm text-destructive">Could not load CRM data. Please sign in again or check your access.</div>; }
+
+function barWidth(value: number, max: number) {
+  if (value <= 0) return "w-0";
+  const ratio = value / max;
+  if (ratio <= 0.125) return "w-1/12";
+  if (ratio <= 0.25) return "w-1/4";
+  if (ratio <= 0.5) return "w-1/2";
+  if (ratio <= 0.75) return "w-3/4";
+  return "w-full";
+}
