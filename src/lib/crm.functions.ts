@@ -22,7 +22,7 @@ export const listLeads = createServerFn({ method: "GET" })
     const { data, error } = await (context as AdminContext).supabase
       .from("leads")
       .select(
-        "id, submitted_at, submitted_at_text, name, company, mobile, email, gstin, address, city, state, product, purpose, page, status, notes",
+        "id, submitted_at, submitted_at_text, name, company, mobile, email, gstin, address, city, state, product, purpose, page, status, notes, followup_date, followup_note, converted_at, purchase_product, purchase_amount, invoice_no",
       )
       .order("submitted_at", { ascending: false })
       .limit(2000);
