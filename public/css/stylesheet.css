@@ -4222,7 +4222,7 @@ body.demo-form-open {
 /* ===== Animated icon-pill navigation ===== */
 .navbar {
   display: grid;
-  grid-template-columns: 245px minmax(0, 1fr) 166px;
+  grid-template-columns: 245px minmax(0, 1fr) 245px;
   min-height: 68px;
   padding: 7px 10px 7px 14px;
   gap: 14px;
@@ -4413,7 +4413,7 @@ body.demo-form-open {
 
 @media (max-width: 1240px) and (min-width: 1101px) {
   .navbar {
-    grid-template-columns: 205px minmax(0, 1fr) 150px;
+    grid-template-columns: 205px minmax(0, 1fr) 205px;
     gap: 8px;
   }
 
@@ -4457,7 +4457,7 @@ body.demo-form-open {
     display: flex;
   }
 
-  .demo-desktop-only {
+  .navbar-demo.demo-desktop-only {
     display: none !important;
   }
 
