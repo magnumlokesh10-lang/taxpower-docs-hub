@@ -4676,3 +4676,31 @@ body.demo-form-open {
     font-size: 9px;
   }
 }
+
+/* Demo button: text color sweeps left -> right in sync with the icon slide. */
+.navbar-demo .text-initial {
+  background-image: linear-gradient(90deg, #f47a22 0%, #f47a22 50%, #00bfff 50%, #00bfff 100%);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, background-position 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.navbar-demo:hover .text-initial,
+.navbar-demo.is-demo-opened .text-initial,
+.navbar-demo.demo-desktop-only:hover .text-initial,
+.navbar-demo.demo-desktop-only.is-demo-opened .text-initial,
+.navbar-demo.demo-mobile-only:hover .text-initial,
+.navbar-demo.demo-mobile-only.is-demo-opened .text-initial {
+  background-position: 0% 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-demo .text-initial {
+    transition: none;
+ec    background-position: 0% 50%;
+  }
+}
