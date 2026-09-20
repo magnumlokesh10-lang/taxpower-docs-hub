@@ -4902,7 +4902,8 @@ body.demo-form-open {
     /* Escape the body's 10px side padding so the header sits edge-to-edge */
     margin-inline: -10px;
     width: calc(100% + 20px);
-    padding-inline: 0;
+    /* Minimal 5px gap on each side — header not stuck to screen edges */
+    padding-inline: 5px;
   }
   .navbar {
     width: 100%;
