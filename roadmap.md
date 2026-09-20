@@ -13,3 +13,5 @@
 - [x] Verify all existing links, GST submenu, and demo action across screen sizes
 - [x] Restore the original branding typography and enhance the Demo button animation
 - [x] Verify the updated header across desktop, tablet, and mobile without pushing
+- [x] Refine desktop header top/side spacing and restore rounded corners
+- [x] Replace the Pricing dollar icon with an Indian rupee icon
