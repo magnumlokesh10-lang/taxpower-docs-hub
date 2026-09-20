@@ -4892,11 +4892,11 @@ body.demo-form-open {
 
 /* ===== Wider navbar (final priority) ===== */
 .header {
-  padding-inline: clamp(8px, 1.2vw, 20px);
+  padding-inline: clamp(5px, 0.7vw, 12px);
 }
 
 @media (min-width: 1101px) {
   .navbar {
-    width: min(1560px, 100%);
+    width: min(1760px, 100%);
   }
 }
