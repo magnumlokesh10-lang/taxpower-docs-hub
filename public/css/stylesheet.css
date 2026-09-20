@@ -4704,3 +4704,35 @@ body.demo-form-open {
     background-position: 0% 50%;
   }
 }
+
+/* Demo button: smoother hover + slow, calm rotating border.
+   (Final-priority block so it wins over the earlier overrides.) */
+
+/* 1. Border color ring: rotate slowly and steadily (3s/4.2s -> 9s). */
+.navbar-demo.demo-desktop-only::before,
+.navbar-demo.demo-mobile-only::before {
+  animation: rotateBorder 9s linear infinite;
+}
+
+/* 2. Hover state glides in instead of snapping:
+   transform + background + shadow all ease over the same 0.45s curve
+   already used by the icon slide and the text color sweep.
+   .demo-mobile-only is repeated because the pill-nav rule above
+   (higher specificity) would otherwise override this transition. */
+.navbar-demo,
+.navbar-demo.demo-mobile-only {
+  transition:
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-demo::before {
+    animation: none;
+  }
+
+  .navbar-demo {
+    transition: none;
+  }
+}
