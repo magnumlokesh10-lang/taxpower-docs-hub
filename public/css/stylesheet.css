@@ -4741,66 +4741,67 @@ body.demo-form-open {
 
 @media (min-width: 1101px) {
   .navbar {
-    min-height: 54px;
-    padding: 4px 8px 4px 12px;
+    min-height: 64px;
+    padding: 6px 8px 6px 12px;
     gap: 12px;
   }
 
   .navbar-links {
-    height: 44px;
+    height: 48px;
     padding: 4px;
     gap: 3px;
   }
 
   .nav-item,
   .navbar-demo.demo-mobile-only {
-    width: 36px;
-    min-width: 36px;
-    max-width: 36px;
-    height: 34px;
-    min-height: 34px;
-    padding: 0 8px;
+    width: 38px;
+    min-width: 38px;
+    max-width: 38px;
+    height: 38px;
+    min-height: 38px;
+    padding: 0 9px;
   }
 
   .nav-item.h-current {
-    min-width: 36px;
-    max-width: 146px;
+    min-width: 38px;
+    max-width: 150px;
   }
 
   .nav-item-icon {
-    flex: 0 0 18px;
-    width: 18px;
-    height: 18px;
+    flex: 0 0 19px;
+    width: 19px;
+    height: 19px;
   }
 
   .navbar-demo.demo-desktop-only {
-    --demo-closed-width: 150px;
-    min-height: 38px;
-    padding: 2px 34px 2px 14px;
+    --demo-closed-width: 158px;
+    min-height: 42px;
+    padding: 3px 34px 3px 15px;
   }
 
   .navbar-logo {
-    min-width: 210px;
+    min-width: 218px;
     padding: 0;
   }
 
   .navbar-icon {
-    height: 34px;
+    height: 38px;
     width: auto;
   }
 
   .brand-title {
-    font-size: 29px;
+    font-size: 31px;
     line-height: 1.15;
   }
 
   .brand-subtitle {
-    font-size: 11px;
+    font-size: 12.5px;
+    letter-spacing: 0.2px;
   }
 
   .sup-for-logo,
   .sup-for-title {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1;
   }
 
@@ -4811,19 +4812,19 @@ body.demo-form-open {
 
 @media (max-width: 1240px) and (min-width: 1101px) {
   .navbar {
-    grid-template-columns: 200px minmax(0, 1fr) 200px;
+    grid-template-columns: 205px minmax(0, 1fr) 205px;
   }
 
   .navbar-logo {
-    min-width: 190px;
+    min-width: 195px;
   }
 
   .brand-title {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .brand-subtitle {
-    font-size: 9px;
+    font-size: 11px;
   }
 }
 
