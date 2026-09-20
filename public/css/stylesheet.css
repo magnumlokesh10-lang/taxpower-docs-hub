@@ -4716,8 +4716,11 @@ body.demo-form-open {
 
 /* 2. Hover state glides in instead of snapping:
    transform + background + shadow all ease over the same 0.45s curve
-   already used by the icon slide and the text color sweep. */
-.navbar-demo {
+   already used by the icon slide and the text color sweep.
+   .demo-mobile-only is repeated because the pill-nav rule above
+   (higher specificity) would otherwise override this transition. */
+.navbar-demo,
+.navbar-demo.demo-mobile-only {
   transition:
     transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
     background-color 0.45s ease,
