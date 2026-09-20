@@ -4935,3 +4935,23 @@ body.demo-form-open {
     background: rgba(244, 122, 34, 0.2);
   }
 }
+
+/* ===== Glass header (final priority) ===== */
+.navbar {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.navbar-links {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 1100px) {
+  .navbar {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px) saturate(160%);
+  }
+}
