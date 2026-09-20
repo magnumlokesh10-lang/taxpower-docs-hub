@@ -4919,8 +4919,8 @@ body.demo-form-open {
     min-width: 42px;
     max-width: none;
     gap: 8px;
-    color: #007f9d;
-    background: rgba(0, 180, 216, 0.12);
+    color: #f47a22;
+    background: rgba(244, 122, 34, 0.12);
   }
 
   .nav-item.nav-item-always .nav-item-label {
@@ -4931,7 +4931,7 @@ body.demo-form-open {
   }
 
   .nav-item.nav-item-always:hover {
-    color: #005f78;
-    background: rgba(0, 180, 216, 0.2);
+    color: #d65f0f;
+    background: rgba(244, 122, 34, 0.2);
   }
 }
