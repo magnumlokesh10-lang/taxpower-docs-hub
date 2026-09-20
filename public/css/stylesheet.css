@@ -4403,6 +4403,12 @@ body.demo-form-open {
   color: #00bfff;
 }
 
+.navbar-demo.demo-desktop-only:hover .btn-orange,
+.navbar-demo.demo-desktop-only:hover .text-initial,
+.navbar-demo.demo-desktop-only.is-demo-opened .text-initial {
+  color: #f47a22;
+}
+
 .navbar-demo.demo-desktop-only:hover {
   background-color: rgba(27, 29, 30, 0.05);
   box-shadow: 0 10px 24px rgba(244, 122, 34, 0.2), 0 4px 14px rgba(0, 180, 216, 0.14);
