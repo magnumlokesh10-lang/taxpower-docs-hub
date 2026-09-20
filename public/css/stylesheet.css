@@ -4709,7 +4709,8 @@ body.demo-form-open {
    (Final-priority block so it wins over the earlier overrides.) */
 
 /* 1. Border color ring: rotate slowly and steadily (3s/4.2s -> 9s). */
-.navbar-demo::before {
+.navbar-demo.demo-desktop-only::before,
+.navbar-demo.demo-mobile-only::before {
   animation: rotateBorder 9s linear infinite;
 }
 
