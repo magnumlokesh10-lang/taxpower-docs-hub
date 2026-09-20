@@ -4899,10 +4899,13 @@ body.demo-form-open {
 
 @media (min-width: 1101px) {
   .header {
+    /* Escape the body's 10px side padding so the header sits edge-to-edge */
+    margin-inline: -10px;
+    width: calc(100% + 20px);
     padding-inline: 0;
   }
   .navbar {
-    width: min(1760px, 100%);
+    width: 100%;
     border-radius: 0;
   }
 }
