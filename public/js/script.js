@@ -846,7 +846,14 @@ function initTaxPowerSite() {
 
     item.addEventListener('click', (event) => {
       setNavClickGuard();
+      const parentDropdown = item.closest('.nav-dropdown');
+      if (parentDropdown && window.innerWidth <= 1180 && !parentDropdown.classList.contains('is-open')) {
+        event.preventDefault();
+        navDropdowns.forEach((dropdown) => dropdown.classList.toggle('is-open', dropdown === parentDropdown));
+        return;
+      }
       if (handleSamePageNavClick(event, item, item)) return;
+      navDropdowns.forEach((dropdown) => dropdown.classList.remove('is-open'));
       setActiveNavItem(item);
     });
   });
@@ -877,10 +884,17 @@ function initTaxPowerSite() {
     dropdownLinks.forEach((dropdownLink) => {
       dropdownLink.addEventListener('click', (event) => {
         setNavClickGuard();
+        dropdown.classList.remove('is-open');
         if (handleSamePageNavClick(event, dropdownLink, dropdownToggle)) return;
         setActiveNavItem(dropdownToggle);
       });
     });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.nav-dropdown')) {
+      navDropdowns.forEach((dropdown) => dropdown.classList.remove('is-open'));
+    }
   });
 
   // Global handler for other in-page hash links (e.g. hero CTA buttons)

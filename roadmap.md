@@ -9,3 +9,5 @@
 - [x] Redesign the website header while preserving all existing content
 - [x] Improve responsive hamburger navigation and verify every header link
 - [x] Validate header on desktop, tablet, and mobile without pushing to GitHub
+- [x] Convert the supplied animated icon navigation into HTML, CSS, and JavaScript
+- [x] Verify all existing links, GST submenu, and demo action across screen sizes
