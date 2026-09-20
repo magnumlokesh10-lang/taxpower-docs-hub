@@ -4781,15 +4781,27 @@ body.demo-form-open {
 
   .navbar-logo {
     min-width: 210px;
-    padding-block: 2px;
+    padding: 0;
+  }
+
+  .navbar-icon {
+    height: 34px;
+    width: auto;
   }
 
   .brand-title {
     font-size: 29px;
+    line-height: 1.15;
   }
 
   .brand-subtitle {
     font-size: 11px;
+  }
+
+  .sup-for-logo,
+  .sup-for-title {
+    font-size: 14px;
+    line-height: 1;
   }
 
   .nav-dropdown-menu {
