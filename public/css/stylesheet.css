@@ -4006,7 +4006,8 @@ body.demo-form-open {
 }
 
 .nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu {
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.is-open .nav-dropdown-menu {
   transform: translateY(0);
 }
 
@@ -4247,6 +4248,7 @@ body.demo-form-open {
 
 .navbar-links {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
@@ -4427,7 +4429,8 @@ body.demo-form-open {
   }
 
   .nav-dropdown:hover .nav-dropdown-menu,
-  .nav-dropdown:focus-within .nav-dropdown-menu {
+  .nav-dropdown:focus-within .nav-dropdown-menu,
+  .nav-dropdown.is-open .nav-dropdown-menu {
     transform: translate(-50%, 0);
   }
 }
