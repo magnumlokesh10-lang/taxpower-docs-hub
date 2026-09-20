@@ -4911,3 +4911,27 @@ body.demo-form-open {
     border-radius: 14px;
   }
 }
+
+/* ===== GST & TDS items always visible (final priority) ===== */
+@media (min-width: 1101px) {
+  .nav-item.nav-item-always {
+    width: auto;
+    min-width: 42px;
+    max-width: none;
+    gap: 8px;
+    color: #007f9d;
+    background: rgba(0, 180, 216, 0.12);
+  }
+
+  .nav-item.nav-item-always .nav-item-label {
+    width: auto;
+    max-width: none;
+    opacity: 1;
+    font-size: 12.5px;
+  }
+
+  .nav-item.nav-item-always:hover {
+    color: #005f78;
+    background: rgba(0, 180, 216, 0.2);
+  }
+}
