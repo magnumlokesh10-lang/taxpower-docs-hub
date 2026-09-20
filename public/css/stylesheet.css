@@ -4584,6 +4584,16 @@ body.demo-form-open {
     animation: demo-soft-glow 3.2s ease-in-out infinite;
   }
 
+  .navbar-demo.demo-mobile-only .btn-orange {
+    width: auto;
+    color: #00bfff;
+  }
+
+  .navbar-demo.demo-mobile-only:hover .text-initial,
+  .navbar-demo.demo-mobile-only.is-demo-opened .text-initial {
+    color: #f47a22;
+  }
+
   .navbar-demo.demo-mobile-only::before {
     display: block;
     animation-duration: 4.2s;

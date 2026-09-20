@@ -11,5 +11,5 @@
 - [x] Validate header on desktop, tablet, and mobile without pushing to GitHub
 - [x] Convert the supplied animated icon navigation into HTML, CSS, and JavaScript
 - [x] Verify all existing links, GST submenu, and demo action across screen sizes
-- [ ] Restore the original branding typography and enhance the Demo button animation
-- [ ] Verify the updated header across desktop, tablet, and mobile without pushing
+- [x] Restore the original branding typography and enhance the Demo button animation
+- [x] Verify the updated header across desktop, tablet, and mobile without pushing
