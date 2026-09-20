@@ -4834,12 +4834,33 @@ body.demo-form-open {
     gap: 8px;
   }
 
+  .navbar-logo {
+    padding: 0;
+  }
+
+  .navbar-icon {
+    height: 32px;
+    width: auto;
+  }
+
   .brand-title {
     font-size: 27px;
+    line-height: 1.15;
   }
 
   .brand-subtitle {
     font-size: 10px;
+  }
+
+  .sup-for-logo,
+  .sup-for-title {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .hamburger-menu {
+    width: 40px;
+    height: 40px;
   }
 
   .nav-item {
