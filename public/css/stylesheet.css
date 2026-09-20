@@ -4889,3 +4889,14 @@ body.demo-form-open {
     font-size: 8px;
   }
 }
+
+/* ===== Wider navbar (final priority) ===== */
+.header {
+  padding-inline: clamp(8px, 1.2vw, 20px);
+}
+
+@media (min-width: 1101px) {
+  .navbar {
+    width: min(1560px, 100%);
+  }
+}
