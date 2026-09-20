@@ -4701,6 +4701,6 @@ body.demo-form-open {
 @media (prefers-reduced-motion: reduce) {
   .navbar-demo .text-initial {
     transition: none;
-ec    background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 }
